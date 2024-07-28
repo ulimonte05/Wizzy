@@ -2,13 +2,16 @@ import os
 import pandas as pd
 from pandasai import Agent
 
+# Establecer la clave de API para pandasai
 os.environ["PANDASAI_API_KEY"] = "$2a$10$1iiB1iJAUICKQeUxvW0NouPZy.mKOL0m.Dc.evAz9o1mqqif/v49m"
 
-def generateResponse (prompt : str):
-    db = pd.read_csv("./../db/ecommerce_inventory.csv")
-    
-    agent = Agent(db)
+# Obtener la ruta absoluta del archivo CSV
+current_dir = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(current_dir, "../db/ecommerce_inventory.csv")
 
+def generateResponse(prompt: str):
+    db = pd.read_csv(csv_path)
+    agent = Agent(db)
     return agent.chat(prompt)
 
 # def generate(self, prompt):

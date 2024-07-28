@@ -1,16 +1,25 @@
 import streamlit as st
 from streamlit_chat import message
-from service.pandasai import generateResponse 
 from streamlit.components.v1 import html
+from service.pandasai import generateResponse
+import pandas as pd
+
+# Cargar el archivo CSV de inventario
+df = pd.read_csv("./db/ecommerce_inventory.csv")
 
 def on_input_change():
     user_input = st.session_state.user_input
     st.session_state.past.append(user_input)
-    st.session_state.generated.append("The messages from Bot\nWith new line")
+    response = generateResponse(user_input)
+    st.session_state.generated.append(response)
 
 def on_btn_click():
     del st.session_state.past[:]
     del st.session_state.generated[:]
+
+def show_inventory():
+    st.header("Inventario")
+    st.dataframe(df)
 
 audio_path = "https://docs.google.com/uc?export=open&id=16QSvoLWNxeqco_Wb2JvzaReSAw5ow6Cl"
 img_path = "https://www.groundzeroweb.com/wp-content/uploads/2017/05/Funny-Cat-Memes-11.jpg"
@@ -58,40 +67,35 @@ A Table:
 | GFM         | 100% w/ `remark-gfm` |
 '''
 
-st.session_state.setdefault(
-    'past', 
-    ['plan text with line break',
-     'play the song "Dancing Vegetables"', 
-     'show me image of cat', 
-     'and video of it',
-     'show me some markdown sample',
-     'table in markdown']
-)
-st.session_state.setdefault(
-    'generated', 
-    [{'type': 'normal', 'data': 'Line 1 \n Line 2 \n Line 3'},
-     {'type': 'normal', 'data': f'<audio controls src="{audio_path}"></audio>'}, 
-     {'type': 'normal', 'data': f'<img width="100%" height="200" src="{img_path}"/>'}, 
-     {'type': 'normal', 'data': f'{youtube_embed}'},
-     {'type': 'normal', 'data': f'{markdown}'},
-     {'type': 'table', 'data': f'{table_markdown}'}]
-)
+st.session_state.setdefault("past", [])
+st.session_state.setdefault("generated", [])
 
 st.title("Wizzy")
 
-chat_placeholder = st.empty()
+# Agregar la selección de sección en la barra lateral
+section = st.sidebar.selectbox("Seleccionar sección", ["Chat", "Inventario"])
 
-with chat_placeholder.container():    
-    for i in range(len(st.session_state['generated'])):                
-        message(st.session_state['past'][i], is_user=True, key=f"{i}_user")
-        message(
-            generateResponse(st.session_state['past'][i]), 
-            key=f"{i}", 
-            allow_html=True,
-            is_table=True if st.session_state['generated'][i]['type']=='table' else False
-        )
-    
-    st.button("Clear message", on_click=on_btn_click)
+if section == "Chat":
+    chat_placeholder = st.empty()
 
-with st.container():
-    st.text_input("User Input:", on_change=on_input_change, key="user_input")
+    with chat_placeholder.container():
+        for i in range(len(st.session_state['generated'])):
+            message(st.session_state['past'][i], is_user=True, key=f"{i}_user")
+            response = st.session_state['generated'][i]
+            if response.endswith('.png'):
+                html_img = f'<img src="{response}" width="100%"/>'
+                message(html_img, key=f"{i}", allow_html=True)
+            else:
+                message(
+                    response, 
+                    key=f"{i}", 
+                    allow_html=True,
+                    is_table=True if response['type']=='table' else False
+                )
+
+        st.button("Clear message", on_click=on_btn_click)
+
+    with st.container():
+        st.text_input("User Input:", on_change=on_input_change, key="user_input")
+elif section == "Inventario":
+    show_inventory()
