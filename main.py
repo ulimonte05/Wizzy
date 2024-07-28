@@ -14,13 +14,20 @@ ai_assistant = AIAssistant(os.path.join(os.path.dirname(__file__), "db/ecommerce
 if "conversation_history" not in st.session_state:
     st.session_state.conversation_history = ""
 
+# Inicializar estado de la sesión
+if "past" not in st.session_state:
+    st.session_state.past = []
+
+if "generated" not in st.session_state:
+    st.session_state.generated = []
+
 # Manejo del input del usuario
 def on_input_change():
     user_input = st.session_state.user_input
     st.session_state.past.append(user_input)
     
     # Generar la respuesta y actualizar el historial de la conversación
-    response, st.session_state.conversation_history = ai_assistant.generate_response(user_input)
+    response, st.session_state.conversation_history = ai_assistant.generate_response(user_input, st.session_state.conversation_history)
     
     st.session_state.generated.append(response)
     st.session_state.user_input = ""  # Vaciar el input de envío
@@ -30,10 +37,6 @@ def on_btn_click():
     st.session_state.past.clear()
     st.session_state.generated.clear()
     st.session_state.conversation_history = ""
-
-# Inicializar estado de la sesión
-st.session_state.setdefault("past", [])
-st.session_state.setdefault("generated", [])
 
 # Título de la aplicación
 st.title("Wizzy")
@@ -45,9 +48,9 @@ section = st.sidebar.selectbox("Seleccionar sección", ["Chat", "Inventario"])
 if section == "Chat":
     chat_placeholder = st.empty()
     with chat_placeholder.container():
-        for i in range(len(st.session_state['generated'])):
-            message(st.session_state['past'][i], is_user=True, key=f"{i}_user")
-            message(st.session_state['generated'][i], key=f"{i}")
+        for i in range(len(st.session_state.generated)):
+            message(st.session_state.past[i], is_user=True, key=f"{i}_user")
+            message(st.session_state.generated[i], key=f"{i}")
 
         st.button("Clear message", on_click=on_btn_click)
 
