@@ -2,9 +2,10 @@ import streamlit as st
 import os
 from streamlit_chat import message
 from service.ai import generateResponse
-from service.products import getProducts, addProduct, modifyProduct, deleteProduct
+from service.products import ProductInventory
 import pandas as pd
 import google.generativeai as genai
+products_manager = ProductInventory(os.path.join(os.path.dirname(__file__), "db/ecommerce_inventory.csv"))
 
 # Configurar Google Generative AI con la clave API
 genai.configure(api_key=os.getenv('API_KEY'))
@@ -33,7 +34,7 @@ def show_inventory():
     st.header("Inventario")
 
     # Mostrar el inventario actual
-    df = pd.DataFrame(getProducts())
+    df = pd.DataFrame(products_manager.get_products())
     st.dataframe(df)
     
     st.subheader("Agregar Producto")
@@ -56,7 +57,7 @@ def show_inventory():
         submitted = st.form_submit_button("Agregar Producto")
         
         if submitted:
-            addProduct(ProductID, ProductName, Category, Brand, Model, Price, StockQuantity, Description, Processor, RAM, Storage, ScreenSize, BatteryLife, GraphicsCard, OperatingSystem)
+            products_manager.add_product(ProductID, ProductName, Category, Brand, Model, Price, StockQuantity, Description, Processor, RAM, Storage, ScreenSize, BatteryLife, GraphicsCard, OperatingSystem)
             st.success(f"Producto {ProductID} agregado exitosamente")
             st.experimental_rerun()
     
@@ -80,7 +81,7 @@ def show_inventory():
         submitted = st.form_submit_button("Modificar Producto")
         
         if submitted:
-            if modifyProduct(ProductID, ProductName, Category, Brand, Model, Price, StockQuantity, Description, Processor, RAM, Storage, ScreenSize, BatteryLife, GraphicsCard, OperatingSystem):
+            if products_manager.modify_product(ProductID, ProductName, Category, Brand, Model, Price, StockQuantity, Description, Processor, RAM, Storage, ScreenSize, BatteryLife, GraphicsCard, OperatingSystem):
                 st.success(f"Producto {ProductID} modificado exitosamente")
             else:
                 st.error(f"Producto {ProductID} no encontrado")
@@ -92,7 +93,7 @@ def show_inventory():
         submitted = st.form_submit_button("Eliminar Producto")
         
         if submitted:
-            if deleteProduct(ProductID):
+            if products_manager.delete_product(ProductID):
                 st.success(f"Producto {ProductID} eliminado exitosamente")
             else:
                 st.error(f"Producto {ProductID} no encontrado")
