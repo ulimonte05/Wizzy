@@ -1,41 +1,15 @@
-Product ID,Product Name,Category,Brand,Model,Price,Stock Quantity,Description
-PC-4883,Lenovo Legion,PC,Lenovo,Legion,2799.16,7,Lenovo Legion with high performance and great features.
-PC-8942,Lenovo IdeaPad,PC,Lenovo,IdeaPad,1395.31,13,Lenovo IdeaPad with high performance and great features.
-PC-5183,Dell Latitude,PC,Dell,Latitude,1189.49,49,Dell Latitude with high performance and great features.
-PC-2857,Acer Predator,PC,Acer,Predator,318.53,43,Acer Predator with high performance and great features.
-PC-6384,Acer Aspire,PC,Acer,Aspire,2257.22,77,Acer Aspire with high performance and great features.
-PC-5998,Dell Latitude,PC,Dell,Latitude,2560.47,82,Dell Latitude with high performance and great features.
-PC-2407,Acer Aspire,PC,Acer,Aspire,1946.07,18,Acer Aspire with high performance and great features.
-PC-5907,Lenovo Legion,PC,Lenovo,Legion,870.62,77,Lenovo Legion with high performance and great features.
-PC-5191,Lenovo IdeaPad,PC,Lenovo,IdeaPad,1014.77,61,Lenovo IdeaPad with high performance and great features.
-PC-7359,Lenovo ThinkPad,PC,Lenovo,ThinkPad,403.42,81,Lenovo ThinkPad with high performance and great features.
-No-6457,HP Envy,Notebook,HP,Envy,2577.37,60,HP Envy with high performance and great features.
-No-5660,Asus VivoBook,Notebook,Asus,VivoBook,2896.53,85,Asus VivoBook with high performance and great features.
-No-5853,Asus ZenBook,Notebook,Asus,ZenBook,1232.15,63,Asus ZenBook with high performance and great features.
-No-8810,Lenovo Legion,Notebook,Lenovo,Legion,2261.14,79,Lenovo Legion with high performance and great features.
-No-7539,Acer Aspire,Notebook,Acer,Aspire,940.5,79,Acer Aspire with high performance and great features.
-No-2220,Acer Aspire,Notebook,Acer,Aspire,789.97,78,Acer Aspire with high performance and great features.
-No-2823,Lenovo ThinkPad,Notebook,Lenovo,ThinkPad,1173.45,42,Lenovo ThinkPad with high performance and great features.
-No-3854,HP Spectre,Notebook,HP,Spectre,2689.71,54,HP Spectre with high performance and great features.
-No-8844,Lenovo IdeaPad,Notebook,Lenovo,IdeaPad,547.21,63,Lenovo IdeaPad with high performance and great features.
-No-3954,Lenovo ThinkPad,Notebook,Lenovo,ThinkPad,697.33,95,Lenovo ThinkPad with high performance and great features.
-La-5907,Acer Swift,Laptop,Acer,Swift,2188.7,13,Acer Swift with high performance and great features.
-La-3098,Asus ZenBook,Laptop,Asus,ZenBook,1612.62,60,Asus ZenBook with high performance and great features.
-La-9942,Asus ZenBook,Laptop,Asus,ZenBook,1797.57,67,Asus ZenBook with high performance and great features.
-La-3571,Acer Predator,Laptop,Acer,Predator,2881.1,12,Acer Predator with high performance and great features.
-La-1170,Acer Swift,Laptop,Acer,Swift,2600.33,87,Acer Swift with high performance and great features.
-La-4941,Asus ROG,Laptop,Asus,ROG,416.11,98,Asus ROG with high performance and great features.
-La-5678,Asus ROG,Laptop,Asus,ROG,1591.47,24,Asus ROG with high performance and great features.
-La-3824,Asus ROG,Laptop,Asus,ROG,2857.7,50,Asus ROG with high performance and great features.
-La-3650,Acer Predator,Laptop,Acer,Predator,1556.3,54,Acer Predator with high performance and great features.
-La-8790,Acer Predator,Laptop,Acer,Predator,616.16,79,Acer Predator with high performance and great features.
-Ma-2147,Apple iMac,Mac,Apple,iMac,2931.81,60,Apple iMac with high performance and great features.
-Ma-1846,Apple iMac,Mac,Apple,iMac,1477.41,100,Apple iMac with high performance and great features.
-Ma-4385,Apple MacBook Pro,Mac,Apple,MacBook Pro,1095.99,21,Apple MacBook Pro with high performance and great features.
-Ma-8264,Apple MacBook Pro,Mac,Apple,MacBook Pro,2645.4,16,Apple MacBook Pro with high performance and great features.
-Ma-6389,Apple MacBook Air,Mac,Apple,MacBook Air,1814.38,34,Apple MacBook Air with high performance and great features.
-Ma-8092,Apple iMac,Mac,Apple,iMac,2366.16,28,Apple iMac with high performance and great features.
-Ma-7564,Apple iMac,Mac,Apple,iMac,1024.02,10,Apple iMac with high performance and great features.
-Ma-1825,Apple MacBook Pro,Mac,Apple,MacBook Pro,1652.36,81,Apple MacBook Pro with high performance and great features.
-Ma-6598,Apple MacBook Air,Mac,Apple,MacBook Air,1573.37,57,Apple MacBook Air with high performance and great features.
-Ma-5094,Apple iMac,Mac,Apple,iMac,2685.59,48,Apple iMac with high performance and great features.
+Product ID,Product Name,Category,Brand,Model,Price,Stock Quantity,Description,Processor,RAM,Storage,Screen Size,Battery Life,Graphics Card,Operating System
+PC-4883,Lenovo Legion,PC,Lenovo,Legion,2799.16,7,The Lenovo Legion is a high-performance gaming PC with Intel Core i7 processor, 16GB RAM, and 512GB SSD. It features a 15.6-inch display and NVIDIA GTX 1660 Ti graphics card, making it perfect for gamers and power users. Pre-installed with Windows 10 Pro.,Intel Core i7,16GB,512GB SSD,15.6 inches,6 hours,NVIDIA GTX 1660 Ti,Windows 10 Pro
+PC-8942,Lenovo IdeaPad,PC,Lenovo,IdeaPad,1395.31,13,The Lenovo IdeaPad is a versatile PC equipped with Intel Core i5 processor, 8GB RAM, and 256GB SSD. It has a 14-inch screen and Intel UHD Graphics, suitable for everyday tasks and multimedia. Comes with Windows 10 Home.,Intel Core i5,8GB,256GB SSD,14 inches,5 hours,Intel UHD Graphics,Windows 10 Home
+PC-5183,Dell Latitude,PC,Dell,Latitude,1189.49,49,Dell Latitude offers reliability and performance with its Intel Core i5 processor, 8GB RAM, and 256GB SSD. The 13.3-inch display and Intel UHD Graphics make it ideal for business use. It runs on Windows 10 Pro.,Intel Core i5,8GB,256GB SSD,13.3 inches,7 hours,Intel UHD Graphics,Windows 10 Pro
+PC-2857,Acer Predator,PC,Acer,Predator,318.53,43,Acer Predator is a budget-friendly gaming PC featuring Intel Core i7, 16GB RAM, and 1TB HDD. The 17.3-inch display and NVIDIA GTX 1060 graphics card offer an immersive gaming experience. It comes with Windows 10 Home.,Intel Core i7,16GB,1TB HDD,17.3 inches,5 hours,NVIDIA GTX 1060,Windows 10 Home
+PC-6384,Acer Aspire,PC,Acer,Aspire,2257.22,77,Acer Aspire combines performance and style with Intel Core i5, 8GB RAM, and 512GB SSD. Its 15.6-inch screen and AMD Radeon RX 560X graphics card are great for multimedia and light gaming. Pre-installed with Windows 10 Home.,Intel Core i5,8GB,512GB SSD,15.6 inches,6 hours,AMD Radeon RX 560X,Windows 10 Home
+PC-5998,Dell Latitude,PC,Dell,Latitude,2560.47,82,High-end Dell Latitude with Intel Core i7, 16GB RAM, and 512GB SSD. It features a 14-inch display and Intel UHD Graphics, perfect for professional use. Runs on Windows 10 Pro.,Intel Core i7,16GB,512GB SSD,14 inches,8 hours,Intel UHD Graphics,Windows 10 Pro
+PC-2407,Acer Aspire,PC,Acer,Aspire,1946.07,18,Acer Aspire offers great value with Intel Core i5, 8GB RAM, and 256GB SSD. The 14-inch screen and Intel UHD Graphics make it ideal for everyday use. Comes with Windows 10 Home.,Intel Core i5,8GB,256GB SSD,14 inches,7 hours,Intel UHD Graphics,Windows 10 Home
+PC-5907,Lenovo Legion,PC,Lenovo,Legion,870.62,77,Affordable Lenovo Legion with Intel Core i5, 8GB RAM, and 1TB HDD. The 15.6-inch display and NVIDIA GTX 1050 graphics card are great for gaming and multimedia. Pre-installed with Windows 10 Home.,Intel Core i5,8GB,1TB HDD,15.6 inches,5 hours,NVIDIA GTX 1050,Windows 10 Home
+PC-5191,Lenovo IdeaPad,PC,Lenovo,IdeaPad,1014.77,61,Lenovo IdeaPad with Intel Core i3, 4GB RAM, and 128GB SSD. Its 14-inch screen and Intel UHD Graphics make it suitable for basic tasks and multimedia. Comes with Windows 10 Home.,Intel Core i3,4GB,128GB SSD,14 inches,4 hours,Intel UHD Graphics,Windows 10 Home
+PC-7359,Lenovo ThinkPad,PC,Lenovo,ThinkPad,403.42,81,Lenovo ThinkPad featuring Intel Core i5, 8GB RAM, and 256GB SSD. The 14-inch display and Intel UHD Graphics are perfect for business professionals. Runs on Windows 10 Pro.,Intel Core i5,8GB,256GB SSD,14 inches,7 hours,Intel UHD Graphics,Windows 10 Pro
+No-6457,HP Envy,Notebook,HP,Envy,2577.37,60,HP Envy is a powerful notebook with Intel Core i7, 16GB RAM, and 512GB SSD. It features a 15.6-inch display and NVIDIA GTX 1650 graphics card, ideal for gaming and professional use. Comes with Windows 10 Home.,Intel Core i7,16GB,512GB SSD,15.6 inches,6 hours,NVIDIA GTX 1650,Windows 10 Home
+No-5660,Asus VivoBook,Notebook,Asus,VivoBook,2896.53,85,Asus VivoBook with Intel Core i5, 8GB RAM, and 256GB SSD. The 14-inch screen and Intel UHD Graphics are perfect for everyday tasks and multimedia. Pre-installed with Windows 10 Home.,Intel Core i5,8GB,256GB SSD,14 inches,6 hours,Intel UHD Graphics,Windows 10 Home
+No-5853,Asus ZenBook,Notebook,Asus,ZenBook,1232.15,63,Asus ZenBook offers performance and portability with Intel Core i5, 8GB RAM, and 512GB SSD. Its 13.3-inch screen and Intel UHD Graphics make it ideal for professionals on the go. Comes with Windows 10 Home.,Intel Core i5,8GB,512GB SSD,13.3 inches,9 hours,Intel UHD Graphics,Windows 10 Home
+No-8810,Lenovo Legion,Notebook,Lenovo,Legion,2261.14,79,High-performance Lenovo Legion notebook with Intel Core i7, 16GB RAM, and 1TB HDD. The 15.6-inch display and NVIDIA GTX 1660 Ti graphics card are great for gaming and multimedia. Runs on Windows 10 Pro.,Intel Core i7,16GB,1TB HDD,15.6 inches,5 hours,NVIDIA GTX 1660 Ti,Windows 10 Pro

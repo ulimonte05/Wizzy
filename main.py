@@ -1,11 +1,16 @@
 import streamlit as st
+import os
 from streamlit_chat import message
 from streamlit.components.v1 import html
 from service.pandasai import generateResponse
 import pandas as pd
+import google.generativeai as genai
+
+genai.configure(api_key=os.getenv('API_KEY'))
 
 # Cargar el archivo CSV de inventario
 df = pd.read_csv("./db/ecommerce_inventory.csv")
+
 
 def on_input_change():
     user_input = st.session_state.user_input
@@ -81,17 +86,12 @@ if section == "Chat":
     with chat_placeholder.container():
         for i in range(len(st.session_state['generated'])):
             message(st.session_state['past'][i], is_user=True, key=f"{i}_user")
-            response = st.session_state['generated'][i]
-            if response.endswith('.png'):
-                html_img = f'<img src="{response}" width="100%"/>'
-                message(html_img, key=f"{i}", allow_html=True)
-            else:
-                message(
-                    response, 
-                    key=f"{i}", 
-                    allow_html=True,
-                    is_table=True if response['type']=='table' else False
-                )
+            response = generateResponse(st.session_state['generated'][i])
+            message(
+                response, 
+                key=f"{i}", 
+                allow_html=True,
+            )
 
         st.button("Clear message", on_click=on_btn_click)
 
