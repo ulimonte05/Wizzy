@@ -40,9 +40,11 @@ With the virtual environment activated, install the necessary packages:
 pip install -r requirements.txt
 ```
 
-Usage
-API Key Setup:
-Set your Gemini API key in the environment variables or configuration file.
+3. Configure your .env
+Use your Gemini API key to run the Assistant.
+```bash
+API_KEY="XXX"
+```
 
 Database Configuration:
 Upload your database to the BD folder. Define the database in your code:
