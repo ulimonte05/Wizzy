@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit_chat import message
+from service.pandasai import generateResponse 
 from streamlit.components.v1 import html
 
 def on_input_change():
@@ -84,7 +85,7 @@ with chat_placeholder.container():
     for i in range(len(st.session_state['generated'])):                
         message(st.session_state['past'][i], is_user=True, key=f"{i}_user")
         message(
-            st.session_state['generated'][i]['data'], 
+            generateResponse(st.session_state['past'][i]), 
             key=f"{i}", 
             allow_html=True,
             is_table=True if st.session_state['generated'][i]['type']=='table' else False
