@@ -4,6 +4,7 @@ from streamlit_chat import message
 from services.ai import AIAssistant
 from services.products import ProductInventory
 from services.forms import show_inventory
+from logger import logger
 
 # Instancias de las clases
 products_manager = ProductInventory(os.path.join(os.path.dirname(__file__), "db/ecommerce_inventory.csv"))

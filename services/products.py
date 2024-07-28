@@ -1,4 +1,5 @@
 import pandas as pd
+from logger import logger
 
 class ProductInventory:
     def __init__(self, csv_path):
@@ -17,21 +18,27 @@ class ProductInventory:
         self.save_products()
 
     def modify_product(self, ProductID, product_data):
-        if ProductID in self.df["ProductID"].values:
+        lista = self.df["ProductID"].values.tolist()
+
+        if int(ProductID) in lista:
             for key, value in product_data.items():
-                self.df.loc[self.df["ProductID"] == ProductID, key] = value
+                self.df.loc[self.df["ProductID"] == int(ProductID), key] = value
             self.save_products()
             return True
         return False
 
     def delete_product(self, ProductID):
-        if ProductID in self.df["ProductID"].values:
-            ProductID = int(ProductID)
-            self.df = self.df[self.df["ProductID"] != ProductID]
+        lista = self.df["ProductID"].values.tolist()
+        logger.debug(f"ProductID: {ProductID}, list: {lista}")
+        if int(ProductID) in lista:
+
+            self.df = self.df[self.df["ProductID"] != int(ProductID)]
             self.save_products()
             return True
+        
         return False
 
     def get_products(self):
         return self.df
     
+

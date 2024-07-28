@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from logger import logger
 
 def show_inventory(products_manager):
     st.header("Inventario")
@@ -26,7 +27,7 @@ def show_inventory(products_manager):
         BatteryLife = st.text_input("BatteryLife")
         GraphicsCard = st.text_input("GraphicsCard")
         OperatingSystem = st.text_input("OperatingSystem")
-        if st.form_submit_button("AgregarProducto"):
+        if st.form_submit_button("Agregar Producto"):
             product_data = {
                 "ProductID": ProductID,
                 "ProductName": ProductName,
@@ -44,9 +45,17 @@ def show_inventory(products_manager):
                 "GraphicsCard": GraphicsCard,
                 "OperatingSystem": OperatingSystem
             }
-            products_manager.add_product(product_data)
-            st.success(f"Producto {ProductID} agregado exitosamente")
-            st.query_params()
+            try:
+                products_manager.add_product(product_data)
+                st.success(f"Producto {ProductID} agregado exitosamente")
+                logger.debug(f"Producto agregado: {product_data}")
+
+                df = pd.DataFrame(products_manager.get_products())
+                st.header("Inventario Actualizado")
+                st.dataframe(df)
+            except Exception as e:
+                st.error(f"Error al agregar producto: {str(e)}")
+                logger.exception("Error al agregar producto")
 
     # Formulario para modificar producto
     st.subheader("Modificar Producto")
@@ -83,19 +92,38 @@ def show_inventory(products_manager):
                 "GraphicsCard": GraphicsCard,
                 "OperatingSystem": OperatingSystem
             }
-            if products_manager.modify_product(ProductID, product_data):
-                st.success(f"Producto {ProductID} modificado exitosamente")
-            else:
-                st.error(f"Producto {ProductID} no encontrado")
-            st.query_params()
+            try:
+                if products_manager.modify_product(ProductID, product_data):
+                    st.success(f"Producto {ProductID} modificado exitosamente")
+                    logger.debug(f"Producto modificado: {ProductID}, {product_data}")
+
+                    df = pd.DataFrame(products_manager.get_products())
+                    st.header("Inventario Actualizado")
+                    st.dataframe(df)
+                else:
+                    st.error(f"Producto {ProductID} no encontrado")
+                    logger.warning(f"Producto no encontrado para modificar: {ProductID}")
+            except Exception as e:
+                st.error(f"Error al modificar producto: {str(e)}")
+                logger.exception("Error al modificar producto")
 
     # Formulario para eliminar producto
     st.subheader("Eliminar Producto")
     with st.form("delete_product_form"):
         ProductID = st.text_input("Product ID a eliminar")
         if st.form_submit_button("Eliminar Producto"):
-            if products_manager.delete_product(ProductID):
-                st.success(f"Producto {ProductID} eliminado exitosamente")
-            else:
-                st.error(f"Producto {ProductID} no encontrado")
-            st.query_params()
+            try:
+                logger.debug(f"Deleting product with ID: {ProductID}")
+                if products_manager.delete_product(ProductID):
+                    st.success(f"Producto {ProductID} eliminado exitosamente")
+                    logger.debug(f"Producto eliminado: {ProductID}")
+                    
+                    df = pd.DataFrame(products_manager.get_products())
+                    st.header("Inventario Actualizado")
+                    st.dataframe(df)
+                else:
+                    st.error(f"Producto {ProductID} no encontrado")
+                    logger.warning(f"Producto no encontrado para eliminar: {ProductID}")
+            except Exception as e:
+                st.error(f"Error al eliminar producto: {str(e)}")
+                logger.exception("Error al eliminar producto")
