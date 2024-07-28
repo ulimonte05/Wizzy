@@ -1,4 +1,7 @@
 ## Wizzy
+
+
+video = https://youtu.be/7yOE_WBEwyA
 Wizzy is an intelligent, Conversational AI-powered chatbot designed to revolutionize the e-commerce experience. By providing real-time product recommendations, inventory updates, and seamless customer interactions, Wizzy ensures an engaging and efficient shopping journey. Embrace the future of retail with Wizzy, your virtual assistant for a smarter, more personalized shopping experience.
 
 Key Features
